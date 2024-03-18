@@ -17,14 +17,14 @@ Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义
 //查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = from<User>()
-				.select { it::userName }.where { it::id == 1 }.query()
+				.select { it.userName }.where { it.id == 1 }.query()
 
 // 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): List<User> = from<User>()
-                .select { it::userName + it::authCode + it::id }
+                .select { it.userName + it.authCode + it.id }
                 .where { it.id == 1 &&  }
                 .page(1, 10)
-                .orderBy { it::updateTime.desc() }
+                .orderBy { it.updateTime.desc() }
                 .distinct()
                 .withTotal {
 	                queryForList()
@@ -32,6 +32,16 @@ val (users, total): List<User> = from<User>()
 
 
 //连表查询
+from<TbUser>(TbUser(id = 1)) {
+            select { it.id + it.age }
+            where { it.id == 1 && it.age >= 2 }
+            groupBy { it.age }
+            orderBy { it.age.desc() }
+            limit(100)
+            left().join(TbShoppingCart()) { user, cart ->
+                on { _, _ -> user.id == cart.id && user.age > 3 }
+            }
+        }
 
 ```
 
