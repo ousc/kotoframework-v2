@@ -32,16 +32,24 @@ val (users, total): List<User> = from<User>()
 
 
 //连表查询
-from<TbUser>(TbUser(id = 1)) {
-            select { it.id + it.age }
-            where { it.id == 1 && it.age >= 2 }
-            groupBy { it.age }
-            orderBy { it.age.desc() }
-            limit(100)
-            left().join(TbShoppingCart()) { user, cart ->
-                on { _, _ -> user.id == cart.id && user.age > 3 }
-            }
-        }
+val result = from<User>()
+                .leftJoin<ShoppingCart>()
+                .rightJoin<Good>()
+                .on { user, cart, good -> 
+	                user.id == cart.id && user.age > 3
+				}
+                .where { user, cart ->
+                    user.id == 1 &&
+                            user.age >= 20 &&
+                            user.email like "%@qq.com" &&
+                            user.telephone notLike "159%" &&
+                            (user.userName in listOf("a", "b", "c") || user.id !in listOf(1, 2, 3)) &&
+                            user.nickname.notNull &&
+                            user.age between 1..2 &&
+                            user.age notBetween 1..2
+                }
+                .groupBy { user, _ -> user.age }
+                .page(1, 100)
 
 ```
 
