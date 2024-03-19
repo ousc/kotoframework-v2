@@ -63,14 +63,19 @@ val result = from<User>()
 val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
 
 // 根据主键更新或插入一行数据
-val (affectRowNumber, lastInsertId) = upsert(User(1)).execute()
+val (affectRowNumber, lastInsertId) = upsert(User(1))
+				.set{ it.createTime to "YYYY-MM-DD" }
+				.execute()
 
 // 根据部分列更新或插入一行数据
 val (affectRowNumber, lastInsertId) = upsert(User(1))
-				 .on{ it.name + it.email}
-				 .execute()
+				.on{ it.name + it.email}
+				.execute()
 // 更新行
-val affectRowNumber = update(User(1)).set{}
+val affectRowNumber = update(User(1))
+				.set{ it.id to 1 }
+				.where()
+				.execute()
 
 ```
 
