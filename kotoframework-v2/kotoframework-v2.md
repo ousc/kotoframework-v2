@@ -56,8 +56,14 @@ val result = from<User>()
                 .withTotal()
                 .query()
 
+// 插入一行数据
 val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
+
+// 根据主键更新或插入一行数据
 val (affectRowNumber, lastInsertId) = upsert(User(1)).execute()
+
+// 根据主键
+val (affectRowNumber, lastInsertId) = upsert(User(1)).on{ it::}.execute()
 
 ```
 
