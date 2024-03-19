@@ -21,7 +21,7 @@ val users: List<Map<String, Any>> = from<User>()
 
 // 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): List<User> = from<User>()
-                .select { it.userName & it.authCode & it.id }
+                .select { it.userName + it.authCode + it.id + field('MAX('')') }
                 .where { it.id == 1 }
                 .page(1, 10)
                 .orderBy { it.updateTime.desc() }
