@@ -16,7 +16,8 @@ Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义
 ```kotlin file:查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = User(1)
-                .select{ where() }.query()
+                .select{ 
+	                where()}.query()
 
 // 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = User().select { 
@@ -62,6 +63,33 @@ val result: List<Map<String, Any>> =
 ```
 
 ```kotlin file:插入示例
+
+
+// 1.插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
+				insert(User(1)).execute()
+
+// 2.根据主键更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.set { it.createTime to "YYYY-MM-DD" }
+				.execute()
+
+// 3.根据部分列更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.on { it.name + it.email}
+				.execute()// 1.插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
+				insert(User(1)).execute()
+
+// 2.根据主键更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.set { it.createTime to "YYYY-MM-DD" }
+				.execute()
+
+// 3.根据部分列更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.on { it.name + it.email}
+				.execute()
 // 1.插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
 				insert(User(1)).execute()
