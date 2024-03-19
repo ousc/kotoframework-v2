@@ -8,4 +8,5 @@ _sort:
   group: false
 sticker: emoji//2699-fe0f
 ---
-`setDefaultJdbcWrapper()`
+1. [[setDefaultJdbcWrapper]]([[KotoJdbcWrapper]])
+2. 
