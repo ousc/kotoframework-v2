@@ -21,6 +21,7 @@ val users: List<Map<String, Any>> = from<User>()
 // 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = from<User>()
                 .select { 
+	                it[]
 	                {it.userName} 
 	                {it.authCode} 
 	                {it.id} 
