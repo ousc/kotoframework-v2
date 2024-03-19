@@ -76,6 +76,14 @@ val affectRowNumber = update(User(1))
 				.set{ it.id to 1 }
 				.where()
 				.execute()
+// 删除行
+val affectRowNumber = delete(User(1))
+				.by{ it.id }
+				.execute()
+				
+val affectRowNumber = delete(User(1))
+				.where{ it.id == <>  }
+				.execute()
 
 ```
 
