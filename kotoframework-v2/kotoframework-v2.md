@@ -13,8 +13,8 @@ sticker: emoji//1f525
 Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义化的orm功能。
 
 >示例：
-```kotlin file:Example.kt
-//查询示例
+```kotlin file:查询示例
+
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = from<User>()
                 .selectAll().where { it.id == 1 }.query()
@@ -64,25 +64,25 @@ val (affectRowNumber, lastInsertId): Pair<Int, Int> = insert(User(1)).execute()
 
 // 根据主键更新或插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.set{ it.createTime to "YYYY-MM-DD" }
+				.set { it.createTime to "YYYY-MM-DD" }
 				.execute()
 
 // 根据部分列更新或插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.on{ it.name + it.email}
+				.on { it.name + it.email}
 				.execute()
 // 更新行
 val affectRowNumber: Int = update(User(1))
-				.set{ it.id to 1 }
+				.set { it.id to 1 }
 				.where()
 				.execute()
 // 删除行
 val affectRowNumber: Int = delete(User(1))
-				.by{ it.id }
+				.by { it.id }
 				.execute()
 				
 val affectRowNumber: Int = delete(User(1))
-				.where{ it.id == it['id']  }
+				.where { it.id.eq  }
 				.execute()
 
 ```
