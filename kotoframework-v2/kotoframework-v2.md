@@ -13,7 +13,7 @@ sticker: emoji//1f525
 Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义化的orm功能。
 
 >示例：
-```kotlin file:Example.kt error:5-6 hl:3-4,7-14
+```kotlin file:Example.kt
 //查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = from<User>()
@@ -21,7 +21,7 @@ val users: List<Map<String, Any>> = from<User>()
 
 // 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): List<User> = from<User>()
-                .select { it.userName + it.authCode + it.id }
+                .select { it.userName & it.authCode & it.id }
                 .where { it.id == 1 }
                 .page(1, 10)
                 .orderBy { it.updateTime.desc() }
@@ -63,7 +63,9 @@ val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
 val (affectRowNumber, lastInsertId) = upsert(User(1)).execute()
 
 // 根据主键
-val (affectRowNumber, lastInsertId) = upsert(User(1)).on{ it::}.execute()
+val (affectRowNumber, lastInsertId) = upsert(User(1))
+				 .on{ it.name}
+				 .execute()
 
 ```
 
