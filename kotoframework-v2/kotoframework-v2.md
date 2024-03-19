@@ -19,7 +19,7 @@ Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义
 val users: List<Map<String, Any>> = from<User>()
                 .selectAll().where { it.id == 1 }.query()
 
-// 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
+// 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = from<User>()
                 .select { it.userName + it.authCode + it.id }
                 .where { it.id == 1 }
@@ -30,7 +30,7 @@ val (users, total): Pair<List<User>, Int> = from<User>()
 	            .queryForList()
 
 
-//连表查询
+// 3.连表查询
 val result: List<Map<String, Any>> = from<User>()
                 .leftJoin<ShoppingCart>{ user, cart ->
 	                user.id == cart.id && user.age > 35
@@ -59,18 +59,6 @@ val result: List<Map<String, Any>> = from<User>()
                 .withTotal()
                 .query()
 
-// 插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = insert(User(1)).execute()
-
-// 根据主键更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.set { it.createTime to "YYYY-MM-DD" }
-				.execute()
-
-// 根据部分列更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.on { it.name + it.email}
-				.execute()
 // 更新行
 val affectRowNumber: Int = update(User(1))
 				.set { it.id to 1 }
@@ -87,6 +75,44 @@ val affectRowNumber: Int = delete(User(1))
 
 ```
 
+```kotlin file:插入示例
+// 1.插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = insert(User(1)).execute()
+
+// 2.根据主键更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.set { it.createTime to "YYYY-MM-DD" }
+				.execute()
+
+// 3.根据部分列更新或插入一行数据
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
+				.on { it.name + it.email}
+				.execute()
+```
+
+```kotlin file:更新示例
+// 更新行
+val affectRowNumber: Int = update(User(1))
+				.set { it.id to 2 }
+				.by { it.id }
+				.execute()
+				
+// 更新行
+val affectRowNumber: Int = update(User(1))
+				.set { it.id to 2 }
+				.by { it.id }
+				.execute()
+```
+```kotlin file:删除示例
+// 删除行
+val affectRowNumber: Int = delete(User(1))
+				.by { it.id }
+				.execute()
+				
+val affectRowNumber: Int = delete(User(1))
+				.where { it.id.eq  }
+				.execute()
+```
 ## 此章节包含以下内容：
 
 > [!NOTE] RoadMap
