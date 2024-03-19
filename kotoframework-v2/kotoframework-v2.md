@@ -33,7 +33,7 @@ val (users, total): List<User> = from<User>()
 //连表查询
 val result = from<User>()
                 .leftJoin<ShoppingCart>{ user, cart ->
-	                user.id == cart.id && user.age > 3
+	                user.id == cart.id && user.age > 35
                 }
                 .rightJoin<Good>(Good(1)){ user, cart, good ->
 	                good.id == cart.id
@@ -55,7 +55,9 @@ val result = from<User>()
                 .page(1, 100)
                 .withTotal()
                 .query()
-            
+
+val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
+val (affectRowNumber, lastInsertId) = upsert(User(1)).execute()
 
 ```
 
