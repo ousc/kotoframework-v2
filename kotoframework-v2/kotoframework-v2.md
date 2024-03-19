@@ -62,7 +62,8 @@ val result: List<Map<String, Any>> = from<User>()
 
 ```kotlin file:插入示例
 // 1.插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = insert(User(1)).execute()
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
+				insert(User(1)).execute()
 
 // 2.根据主键更新或插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
