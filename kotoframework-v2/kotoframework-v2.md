@@ -59,20 +59,6 @@ val result: List<Map<String, Any>> = from<User>()
                 .withTotal()
                 .query()
 
-// 更新行
-val affectRowNumber: Int = update(User(1))
-				.set { it.id to 1 }
-				.where()
-				.execute()
-// 删除行
-val affectRowNumber: Int = delete(User(1))
-				.by { it.id }
-				.execute()
-				
-val affectRowNumber: Int = delete(User(1))
-				.where { it.id.eq  }
-				.execute()
-
 ```
 
 ```kotlin file:插入示例
@@ -98,11 +84,12 @@ val affectRowNumber: Int = update(User(1))
 				.execute()
 				
 // 更新行
-val affectRowNumber: Int = update(User(1))
-				.set { it.id to 2 }
-				.by { it.id }
+val affectRowNumber: Int = update(User(2))
+				.set { it.id }
+				.where{ it.id == 1}
 				.execute()
 ```
+
 ```kotlin file:删除示例
 // 删除行
 val affectRowNumber: Int = delete(User(1))
@@ -113,6 +100,7 @@ val affectRowNumber: Int = delete(User(1))
 				.where { it.id.eq  }
 				.execute()
 ```
+
 ## 此章节包含以下内容：
 
 > [!NOTE] RoadMap
