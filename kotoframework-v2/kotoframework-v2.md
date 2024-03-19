@@ -13,7 +13,7 @@ sticker: emoji//1f525
 Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义化的orm功能。
 
 >示例：
-```kotlin hl:3-4,7-15
+```kotlin
 //查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = from<User>()
