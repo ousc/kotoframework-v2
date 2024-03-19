@@ -34,38 +34,30 @@ val (users, total): Pair<List<User>, Int> = User().select {
 
 // 3.连表查询
 val result: List<Map<String, Any>> = 
-			Join(User(), ShoppingCart(), Good()){ user, cart, good ->
-				leftJoin(cart).on(user.id == cart.id && user.age > 35)
-				rightJoin(cart).on(user.id == cart.id && user.age > 35)
-			}
-User().select { user ->
-	                leftJoin<ShoppingCart>{ cart ->
-		                on(user.id == cart.id && user.age > 35)
-		                rightJoin<Good>(Good(1)){ good ->
-				            on(good.id == cart.id)
-				        }
-				    }.select { user, cart, good ->
-					    col(user, good.id, cart.id)
-			                where (
-			                    user.id == 1 &&
-								user.age >= 20 &&
-								user.email like "%@qq.com" &&
-								user.telephone notLike "159%" &&
-								(
-									user.userName in listOf("a", "b") || 
-									user.id !in listOf(1, 2, 3)
-								) &&
-								user.nickname.notNull &&
-								user.age between 1..2 &&
-								user.age notBetween 1..2
-			                )
-			                groupBy (user.age)
-			                page(1, 100)
-		                }
-	                }
+				multi(User(), ShoppingCart(), Good()){ user, cart, good ->
+					leftJoin(cart)
+						.on(user.id == cart.id && user.age > 35)
+					rightJoin(good)
+						.on(good.id == cart.id)
+					select(user, good.id, cart.id)
+					where (
+						user.id == 1 &&
+						user.age >= 20 &&
+						user.email like "%@qq.com" &&
+						user.telephone notLike "159%" &&
+						(
+							user.userName in listOf("a", "b") || 
+							user.id !in listOf(1, 2, 3)
+						) &&
+						user.nickname.notNull &&
+						user.age between 1..2 &&
+						user.age notBetween 1..2
+					)
+					groupBy (user.age)
+					page(1, 100)
 				}
-                .withTotal()
-                .query()
+				.withTotal()
+				.query()
 
 ```
 
