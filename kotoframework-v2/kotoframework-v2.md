@@ -20,10 +20,12 @@ val users: List<Map<String, Any>> = User(1)
 
 // 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = User().select { 
-	                column(it::userName, it::userName, it::authCode, it::id)
+	                col(it::userName, it::userName, it::authCode, it::id)
 	                where (it::id == 1)
+	                // filter (it::id == 1)
+	                by(it::id)
 	                page(1, 10)
-	                orderBy(it.updateTime.desc)
+	                sortBy(it.updateTime.desc)
 	                distinct()
 	            }
 	            .withTotal()
@@ -50,8 +52,8 @@ val result: List<Map<String, Any>> = User().select { user ->
 								user.age between 1..2 &&
 								user.age notBetween 1..2
 			                )
-			                groupBy (user.age )
-			                page(1..100)
+			                groupBy (user.age)
+			                page(1, 100)
 		                }
 	                }
 				}
