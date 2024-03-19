@@ -17,11 +17,11 @@ Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义
 //查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
 val users: List<Map<String, Any>> = from<User>()
-				.select { it.userName }.where { it.id == 1 }.query()
+                .selectAll().where { it.id == 1 }.query()
 
 // 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): List<User> = from<User>()
-                .select { it.userName + it.authCode + it.id + field('MAX('')') }
+                .select { it.userName + it.authCode + it.id }
                 .where { it.id == 1 }
                 .page(1, 10)
                 .orderBy { it.updateTime.desc() }
@@ -37,6 +37,9 @@ val result = from<User>()
                 }
                 .rightJoin<Good>(Good(1)){ user, cart, good ->
 	                good.id == cart.id
+                }
+                .select { user, cart, good ->
+	                user + cart.id + good.id
                 }
                 .where { user, cart, good ->
                     user.id == 1 &&
@@ -62,10 +65,12 @@ val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
 // 根据主键更新或插入一行数据
 val (affectRowNumber, lastInsertId) = upsert(User(1)).execute()
 
-// 根据主键
+// 根据部分列更新或插入一行数据
 val (affectRowNumber, lastInsertId) = upsert(User(1))
-				 .on{ it.name}
+				 .on{ it.name + it.email}
 				 .execute()
+// 更新行
+val affectRowNumber = update(User(1)).set{}
 
 ```
 
