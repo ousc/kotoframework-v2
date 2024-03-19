@@ -19,7 +19,7 @@ val users: List<Map<String, Any>> = User(1).select{ where() }.query()
 
 // 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = User().select { 
-	                col(it::userName, it::userName, it::authCode, it::id)
+	                col(it::id, it::userName, it::authCode)
 	                where (it::id == 1)
 	                // filter (it::id == 1)
 	                by(it::id)
