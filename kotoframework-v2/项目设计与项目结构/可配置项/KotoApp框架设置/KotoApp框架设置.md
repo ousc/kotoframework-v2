@@ -6,5 +6,6 @@ _sort:
   field: rank
   asc: false
   group: false
+sticker: emoji//2699-fe0f
 ---
 `setDefaultJdbcWrapper()`
