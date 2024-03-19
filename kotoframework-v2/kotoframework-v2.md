@@ -54,7 +54,7 @@ val result: List<Map<String, Any>> = from<User>()
 					user.age notBetween 1..2
                 }
                 .groupBy { user, _, _ -> user.age }
-                .page(1, 100)
+                .page(1..100)
                 .withTotal()
                 .query()
 
