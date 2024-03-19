@@ -1,3 +1,1 @@
----
-expression: true
----
+#kotlin-function
