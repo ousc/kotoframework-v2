@@ -34,7 +34,7 @@ val (users, total): Pair<List<User>, Int> = User().select {
 
 // 3.连表查询
 val result: List<Map<String, Any>> = 
-				multi(User(), ShoppingCart(), Good()){ user, cart, good ->
+				User().join(ShoppingCart(), Good()){ user, cart, good ->
 					leftJoin(cart)
 						.on(user.id == cart.id && user.age > 35)
 					rightJoin(good)
