@@ -20,7 +20,12 @@ val users: List<Map<String, Any>> = from<User>()
 
 // 2.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
 val (users, total): Pair<List<User>, Int> = from<User>()
-                .select { it.userName and it.authCode and it.id }
+                .select { 
+	                {it.userName} 
+	                {it.authCode} 
+	                {it.id} 
+	                {"select username from ...  as a"}
+	            }
                 .where { it.id == 1 }
                 .page(1, 10)
                 .orderBy { it.updateTime.desc() }
@@ -38,7 +43,9 @@ val result: List<Map<String, Any>> = from<User>()
 	                good.id == cart.id
                 }
                 .select { user, cart, good ->
-	                user + cart.id + good.id
+	                { user }
+	                { cart.id }
+	                { good.id }
                 }
                 .where { user, cart, good ->
                     user.id == 1 &&
