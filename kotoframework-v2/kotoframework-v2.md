@@ -26,9 +26,8 @@ val (users, total): List<User> = from<User>()
                 .page(1, 10)
                 .orderBy { it.updateTime.desc() }
                 .distinct()
-                .withTotal {
-	                queryForList()
-                }
+                .withTotal()
+	            .queryForList()
 
 
 //连表查询
@@ -54,6 +53,9 @@ val result = from<User>()
                 }
                 .groupBy { user, _, _ -> user.age }
                 .page(1, 100)
+                .withTotal()
+                .query()
+            
 
 ```
 
