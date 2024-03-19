@@ -130,10 +130,8 @@ val affectRowNumber: Int = delete(User(1))
 				.execute()
 ```
 
-## 此章节包含以下内容：
 
-> [!NOTE] RoadMap
+> [!NOTE] 此章节包含以下内容
 > [[Roadmap]]
+>  [[项目结构]]
 
-> [!NOTE] 项目结构
-> [[项目结构]]
