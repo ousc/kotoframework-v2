@@ -20,7 +20,7 @@ val users: List<Map<String, Any>> = from<User>()
                 .selectAll().where { it.id == 1 }.query()
 
 // 1.多条件查询 / 查询多个字段 / 带分页 / 带去重 / 带排序
-val (users, total): List<User> = from<User>()
+val (users, total): Pair<List<User>, Int> = from<User>()
                 .select { it.userName + it.authCode + it.id }
                 .where { it.id == 1 }
                 .page(1, 10)
@@ -31,7 +31,7 @@ val (users, total): List<User> = from<User>()
 
 
 //连表查询
-val result = from<User>()
+val result: List<Map<String, Any>> = from<User>()
                 .leftJoin<ShoppingCart>{ user, cart ->
 	                user.id == cart.id && user.age > 35
                 }
@@ -60,29 +60,29 @@ val result = from<User>()
                 .query()
 
 // 插入一行数据
-val (affectRowNumber, lastInsertId) = insert(User(1)).execute()
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = insert(User(1)).execute()
 
 // 根据主键更新或插入一行数据
-val (affectRowNumber, lastInsertId) = upsert(User(1))
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
 				.set{ it.createTime to "YYYY-MM-DD" }
 				.execute()
 
 // 根据部分列更新或插入一行数据
-val (affectRowNumber, lastInsertId) = upsert(User(1))
+val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
 				.on{ it.name + it.email}
 				.execute()
 // 更新行
-val affectRowNumber = update(User(1))
+val affectRowNumber: Int = update(User(1))
 				.set{ it.id to 1 }
 				.where()
 				.execute()
 // 删除行
-val affectRowNumber = delete(User(1))
+val affectRowNumber: Int = delete(User(1))
 				.by{ it.id }
 				.execute()
 				
-val affectRowNumber = delete(User(1))
-				.where{ it.id == <>  }
+val affectRowNumber: Int = delete(User(1))
+				.where{ it.id == it['id']  }
 				.execute()
 
 ```
