@@ -1,3 +1,6 @@
+---
+sticker: emoji//1f4cc
+---
 #kotlin-class #注解
 
 | 列           | 值                                              |
