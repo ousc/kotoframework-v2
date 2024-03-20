@@ -8,4 +8,4 @@ _sort:
   group: false
 sticker: emoji//1f4cc
 ---
-1. [[TableName]]
+1. [[Table]](name = <span style="color:#c00000">"table_name"</span>)
