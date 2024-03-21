@@ -14,9 +14,14 @@ abstract fun forMap(sql: String, paramMap: Map<String, Any?> = mapOf()): Map<Str
 abstract fun <T> forObject(sql: String, paramMap: Map<String, Any?> = mapOf(), clazz: Class<T>): T?  
 ```
 
+```kotlin file:根据传入的sql和Map更新数据行
+abstract fun update(sql: String, paramMap: Map<String, Any?> = mapOf()): Int
+```
 
-abstract fun update(sql: String, paramMap: Map<String, Any?> = mapOf()): Int  
-abstract fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): IntArray  
+  ```kotlin file:根据传入的sql和Map批量执行更新数据行
+abstract fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): IntArray 
+```
+ 
   
 inline fun <reified T : KPojo> update(kPojo: T, vararg fields: Field): UpdateAction<T> {  
     return com.kotoframework.function.update.update(kPojo, *fields, jdbcWrapper = this)  
