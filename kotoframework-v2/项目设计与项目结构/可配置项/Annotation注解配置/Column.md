@@ -10,10 +10,10 @@ sticker: emoji//1f4cc
 
 ##### 成员变量
 
-| 变量名                                                       | 类型                                                     | 解释         |
-| --------------------------------------------------------- | ------------------------------------------------------ | ---------- |
-| <span style='color:var(--mk-color-teal)'>name</span>      | <span style='color:var(--mk-color-red)'>String</span>  | 列名         |
-| <span style='color:var(--mk-color-teal)'>jsonField</span> | <span style='color:var(--mk-color-red)'>Boolean</span> | 是否为解析JSON列 |
+| 变量名         | 类型        | 解释         |
+| ----------- | --------- | ---------- |
+| `name`      | `String`  | 列名         |
+| `jsonField` | `Boolean` | 是否为解析JSON列 |
 
 使用示例：
 ```kotlin

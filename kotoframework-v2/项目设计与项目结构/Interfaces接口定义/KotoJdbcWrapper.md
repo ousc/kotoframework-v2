@@ -45,6 +45,14 @@ fun update(sql: String, paramMap: Map<String, Any?> = mapOf()): Int
 fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): IntArray 
   ```
 
+
+##### 成员变量：
+
+| 变量名      | 类型       | 解释             |
+| -------- | -------- | -------------- |
+| `url`    | `String` | Connection URL |
+| `dbType` |          |                |
+
 ##### Connection URL
 <span style='color:var(--mk-color-purple)'>val</span> <span style='color:var(--mk-color-turquoise)'>url</span>: <span style='color:var(--mk-color-red)'>String</span>
 

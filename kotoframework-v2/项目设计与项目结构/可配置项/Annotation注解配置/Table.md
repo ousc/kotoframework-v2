@@ -8,13 +8,13 @@ sticker: emoji//1f4cc
 
 ##### 成员变量
 
-| 变量名                                                       | 类型                                                     | 解释           |
-| --------------------------------------------------------- | ------------------------------------------------------ | ------------ |
-| <span style='color:var(--mk-color-teal)'>name</span>      | <span style='color:var(--mk-color-red)'>String</span>  | 列名           |
+| 变量名    | 类型       | 解释  |
+| ------ | -------- | --- |
+| `name` | `String` | 列名  |
 
 使用示例：
 ```kotlin
 @Table(name = "tb_user") data class User(): KPojo
 ```
 
->该注解仅能在Property级别使用
+>该注解仅能在Class级别使用
