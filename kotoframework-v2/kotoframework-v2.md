@@ -67,38 +67,38 @@ val (affectRowNumber, lastInsertId): Pair<Int, Int> =
 
 // 2.根据主键更新或插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.set { it.createTime to "YYYY-MM-DD" }
-				.execute()
+								.set { it.createTime to "YYYY-MM-DD" }
+								.execute()
 
 // 3.根据部分列更新或插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.on { it.name + it.email}
-				.execute()// 1.插入一行数据
+								.on { it.name + it.email}
+								.execute()// 1.插入一行数据
 ```
 
 ```kotlin file:更新示例
 // 更新行
 val affectRowNumber: Int = update(User(1))
-				.set { it.id to 2 }
-				.by { it.id }
-				.execute()
+								.set { it.id to 2 }
+								.by { it.id }
+								.execute()
 				
 // 更新行
 val affectRowNumber: Int = update(User(2))
-				.set { it.id }
-				.where{ it.id == 1}
-				.execute()
+								.set { it.id }
+								.where{ it.id == 1}
+								.execute()
 ```
 
 ```kotlin file:删除示例
 // 删除行
 val affectRowNumber: Int = delete(User(1))
-				.by { it.id }
-				.execute()
+								.by { it.id }
+								.execute()
 				
 val affectRowNumber: Int = delete(User(1))
-				.where { it.id.eq  }
-				.execute()
+								.where { it.id.eq  }
+								.execute()
 ```
 
 
