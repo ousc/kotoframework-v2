@@ -6,11 +6,14 @@ sticker: emoji//1f4cc
 #class #注解 
 
 > [!NOTE] 简介
-> 用于指定该属性类绑定的数据库列名，优先级高于根据类名获取列名的通用设置([[setFieldNamingStrategy]])
+> 用于指定该属性绑定的数据库列名，优先级高于根据属性获取列名的通用设置([[setFieldNamingStrategy]])
 
+##### 成员变量
+<span style='color:var(--mk-color-purple)'>val</span> <span style='color:var(--mk-color-teal)'>name</span>: <span style='color:var(--mk-color-red)'>String</span>
+val jsonField: Boolean = false
+使用示例：
+```kotlin
+@Table(name = "user") data class User: KPojo
+```
 
-| 列           | 值                                              |
-| ----------- | ---------------------------------------------- |
-| description | 表名注解，当没有注解时，表名默认为类名调用namingStrategy转换后的名称      |
-| for         | Class                                          |
-| example     | `@Table(name = "user") data class User: KPojo` |
+>该注解仅能在Property级别使用
