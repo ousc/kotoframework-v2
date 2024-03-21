@@ -14,5 +14,5 @@ sticker: emoji//1f527
 
 使用示例：
 ```kotlin
-KotoApp.setTableNamingStrategy(TableNamingStrategy(line2hump, hump2line))
+KotoApp.setTableNamingStrategy(NamingStrategy(line2hump, hump2line))
 ```
