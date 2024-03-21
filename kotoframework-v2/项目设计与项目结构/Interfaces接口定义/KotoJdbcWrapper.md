@@ -46,5 +46,5 @@ fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): I
   ```
 
 - Connection的URL
-<span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">url</span>: <span style="color:#0ca9ac">String</span>
-val 
+<span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">url</span>: <span style="color:#c00000">String</span>
+<span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">dbType</span>: DBType
