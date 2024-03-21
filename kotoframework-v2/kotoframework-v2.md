@@ -11,6 +11,8 @@ sticker: emoji//1f525
 ## Koto 是一个数据持久层框架，设计用于 Kotlin，轻量级，现代化。
 
 Koto 2.0旨在通过编写kotlin k2编译器插件，实现更加强大且语义化的orm功能。
+
+-------
 >示例：
 ```kotlin file:查询示例
 // 1. 条件查询 / 查询单个字段 / 使用query()查询List<Map>结果
@@ -60,6 +62,7 @@ val result: List<Map<String, Any>> =
 
 ```
 
+------
 ```kotlin file:插入示例
 // 1.插入一行数据
 val affectRowNumber: Pair<Int, Int> = 
@@ -78,6 +81,7 @@ val affectRowNumber: Pair<Int, Int> =
 			.execute()
 ```
 
+------
 ```kotlin file:更新示例
 // 更新行
 val affectRowNumber: Int = 
@@ -94,6 +98,7 @@ val affectRowNumber: Int =
 			.execute()
 ```
 
+------
 ```kotlin file:删除示例
 // 删除行
 val affectRowNumber: Int = 
@@ -107,6 +112,7 @@ val affectRowNumber: Int =
 			.execute()
 ```
 
+------
 
 > [!NOTE] 此章节包含以下内容
 > [[Roadmap]]
