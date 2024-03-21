@@ -1,5 +1,5 @@
 ---
-sticker: emoji//1f418
+sticker: emoji//1f50c
 ---
 #interface
 
