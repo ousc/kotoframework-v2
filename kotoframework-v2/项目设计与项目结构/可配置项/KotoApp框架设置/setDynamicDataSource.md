@@ -3,8 +3,8 @@ sticker: emoji//1f527
 ---
 #function 
 
-> [!NOTE] 设置默认的数据源
-> 用于设置默认使用的数据源
+> [!NOTE] 简介
+> 用于设置动态的数据源，生效的优先级别高于[[setDataSource]]
 
 接受参数：
 - () -> [[KotoJdbcWrapper]]
