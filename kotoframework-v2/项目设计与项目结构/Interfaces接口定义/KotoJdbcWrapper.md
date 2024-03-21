@@ -1,7 +1,7 @@
 ---
 sticker: emoji//1f418
 ---
-#kotlin-class #abstract 
+#interface
 
 > [!NOTE] 简介
 > 数据源的包装类，用于为Koto提供数据库访问能力
