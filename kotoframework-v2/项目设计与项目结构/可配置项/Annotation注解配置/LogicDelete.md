@@ -1,5 +1,3 @@
 ---
-aliases:
-  - Column
 sticker: emoji//1f4cc
 ---
