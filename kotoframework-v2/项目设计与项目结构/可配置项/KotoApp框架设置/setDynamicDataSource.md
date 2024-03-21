@@ -7,7 +7,7 @@ sticker: emoji//1f527
 > 用于设置默认使用的数据源
 
 接受参数：
-- ()->[[KotoJdbcWrapper]]
+- () -> [[KotoJdbcWrapper]]
 
 返回值：
 - [[KotoApp]]
@@ -15,6 +15,10 @@ sticker: emoji//1f527
 使用示例：
 ```kotlin
 KotoApp.setDynamicDataSource {
-	SomeJdbcWrapper()
+	if(someCondition){
+		SpecificJdbcWrapper
+	} else {
+		AnotherJdbcWrapper
+	}
 }
 ```

@@ -11,3 +11,8 @@ sticker: emoji//1f527
 
 返回值：
 - [[KotoApp]]
+
+使用示例：
+```kotlin
+KotoApp.setDataSource(SomeJdbcWrapper)
+```

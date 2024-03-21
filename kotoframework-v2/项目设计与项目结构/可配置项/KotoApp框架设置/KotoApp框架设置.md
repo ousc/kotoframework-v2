@@ -9,4 +9,4 @@ _sort:
 sticker: emoji//2699-fe0f
 ---
 1. [[setDataSource]]([[KotoJdbcWrapper]])
-2. setDynamicDataSource(()->[[KotoJdbcWrapper]])
+2. [[setDynamicDataSource]](()->[[KotoJdbcWrapper]])
