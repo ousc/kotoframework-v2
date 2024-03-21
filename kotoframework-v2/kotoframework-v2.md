@@ -61,8 +61,6 @@ val result: List<Map<String, Any>> =
 ```
 
 ```kotlin file:插入示例
-
-
 // 1.插入一行数据
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
 				insert(User(1)).execute()
@@ -76,31 +74,6 @@ val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
 val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
 				.on { it.name + it.email}
 				.execute()// 1.插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
-				insert(User(1)).execute()
-
-// 2.根据主键更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.set { it.createTime to "YYYY-MM-DD" }
-				.execute()
-
-// 3.根据部分列更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.on { it.name + it.email}
-				.execute()
-// 1.插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = 
-				insert(User(1)).execute()
-
-// 2.根据主键更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.set { it.createTime to "YYYY-MM-DD" }
-				.execute()
-
-// 3.根据部分列更新或插入一行数据
-val (affectRowNumber, lastInsertId): Pair<Int, Int> = upsert(User(1))
-				.on { it.name + it.email}
-				.execute()
 ```
 
 ```kotlin file:更新示例
