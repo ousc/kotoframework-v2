@@ -1,9 +1,10 @@
 ---
 sticker: emoji//1f4d5
 ---
+#class 
 
 > [!NOTE] 简介：
-> 表名命名策略，用于设置数据库表名与KPojo对象名之间的映射关系。可以使用驼峰命名、下划线命名或其他命名策略，以便实现对象与数据库表的映射。
+> 命名策略，用于设置数据库表名（或列名）与KPojo对象名（或属性名）之间的映射关系。可以使用驼峰命名、下划线命名或其他命名策略，以便实现对象与数据库表的映射。
 
 ##### 表名转换为KPojo对象名函数：
 <span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">tableName2KPojoName</span>: (<span style="color:#c00000">String</span>) -> <span style="color:#c00000">String</span>
