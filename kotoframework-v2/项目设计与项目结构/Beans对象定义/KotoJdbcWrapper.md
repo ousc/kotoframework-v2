@@ -2,6 +2,10 @@
 sticker: emoji//1f418
 ---
 #kotlin-class #abstract 
+
+> [!NOTE] 简介
+> 数据源的包装类，用于为Koto提供数据库访问能力
+
 ```kotlin file:通过传入的sql和Map查询数据列表
 abstract fun forList(sql: String, paramMap: Map<String, Any?> = mapOf()): List<Map<String, Any>>  
 ```
@@ -22,5 +26,5 @@ abstract fun update(sql: String, paramMap: Map<String, Any?> = mapOf()): Int
 abstract fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): IntArray 
 ```
 
-Connection的URL
+- Connection的URL
 <span style="color:#c73ef9">abstract</span> <span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">url</span>: <span style="color:#0ca9ac">String</span>
