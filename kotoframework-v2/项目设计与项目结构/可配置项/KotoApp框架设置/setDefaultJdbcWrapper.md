@@ -7,4 +7,7 @@ sticker: emoji//1f527
 > 用于设置默认使用的数据源
 
 接受参数：
-- DataSouce
+- [[KotoJdbcWrapper]]
+
+返回值：
+- [[KotoApp]]
