@@ -8,4 +8,10 @@ _sort:
   group: false
 sticker: emoji//1f4cc
 ---
-1. [[Table]](name = <span style="color:#c00000">"table_name"</span>)
+1. [[Table]](name = "<span style='color:var(--mk-color-red)'>table_name</span>")
+2. [[Column]](name = "<span style='color:var(--mk-color-red)'>column_name</span>")
+3. [[Default]](value = "<span style='color:var(--mk-color-red)'>someValue</span>")
+4. [[DateTimeFormat]](format = "<span style='color:var(--mk-color-red)'>%Y-%m-%d</span>")
+5. [[CreateTime]]
+6. [[UpdateTime]]
+7. [[LogicDelete]]
