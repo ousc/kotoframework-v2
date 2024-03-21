@@ -45,8 +45,10 @@ fun update(sql: String, paramMap: Map<String, Any?> = mapOf()): Int
 fun batchUpdate(sql: String, paramMaps: Array<Map<String, Any?>> = arrayOf()): IntArray 
   ```
 
-- Connection的URL
-<span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">url</span>: <span style="color:#c00000">String</span>
+```kotlin file:Connection的URL
+val url:String
+```
 
-- 数据库类型
+```
+```数据库类型
 <span style="color:#c73ef9">val</span> <span style="color:#0ca9ac">dbType</span>: [[DBType]]
