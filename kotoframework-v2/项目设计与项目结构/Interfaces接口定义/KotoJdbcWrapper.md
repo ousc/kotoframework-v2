@@ -11,7 +11,7 @@ sticker: emoji//1f50c
 | 变量名      | 类型         | 解释             |
 | -------- | ---------- | -------------- |
 | `url`    | `String`   | Connection URL |
-| `dbType` | [[DBType]] | ##### 数据源类型    |
+| `dbType` | [[DBType]] | 数据源类型          |
 
 ##### 成员函数：
 ```kotlin file:1.通过传入的sql和Map查询数据列表
